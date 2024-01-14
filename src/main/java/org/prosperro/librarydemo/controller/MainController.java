@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import org.prosperro.librarydemo.model.Book;
 import org.prosperro.librarydemo.model.Customer;
 import org.prosperro.librarydemo.model.Library;
+import org.prosperro.librarydemo.utils.CRUDUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -22,10 +24,17 @@ public class MainController {
     @Transactional
     @GetMapping("/")
     public String initDb() {
-        Library library = setupLibrary();
+        boolean isGood = doCustomBatch();
 
-        entityManager.persist(library);
-        return library.toString();
+        return isGood ? "We good":"FAILED";
+    }
+
+    private boolean doCustomBatch(){
+        CRUDUtil utils = new CRUDUtil();
+        List<Library> libraries = utils.setUpLibraryList();
+        for (Library lib : libraries){
+            entityManager.persist(lib);}
+        return true;
     }
 
     @Transactional

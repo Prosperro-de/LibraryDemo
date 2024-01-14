@@ -12,17 +12,17 @@
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
             <!-- Database connection URL -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5435/postgres"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/m3"/>
 
             <!-- Database username -->
             <property name="javax.persistence.jdbc.user" value="postgres"/>
 
             <!-- Database password -->
-            <property name="javax.persistence.jdbc.password" value="password"/>
+            <property name="javax.persistence.jdbc.password" value="1111"/>
 
             <!-- Hibernate properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
